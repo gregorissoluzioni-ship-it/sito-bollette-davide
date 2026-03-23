@@ -366,17 +366,45 @@
       padding:26px 0 8px;
     }
 
-    .privacy-box{
+    .privacy-accordion{
       background:#fff;
       border:1px solid var(--line);
       border-radius:20px;
-      padding:18px;
+      overflow:hidden;
     }
 
-    .privacy-box h3{
-      margin:0 0 10px;
+    .privacy-accordion summary{
+      list-style:none;
+      cursor:pointer;
+      padding:18px;
       font-size:1rem;
-      letter-spacing:-0.02em;
+      font-weight:700;
+      color:#334155;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+    }
+
+    .privacy-accordion summary::-webkit-details-marker{
+      display:none;
+    }
+
+    .privacy-accordion summary::after{
+      content:"+";
+      font-size:1.2rem;
+      color:var(--muted);
+      transition:transform .2s ease;
+    }
+
+    .privacy-accordion[open] summary::after{
+      content:"−";
+    }
+
+    .privacy-box{
+      background:#fff;
+      border-top:1px solid var(--line);
+      border-radius:0;
+      padding:18px;
     }
 
     .privacy-box p{
@@ -572,7 +600,7 @@
           </p>
 
           <div class="form-note">
-            I dati inviati tramite questo modulo saranno usati solo per ricontattarti in merito alla tua richiesta e saranno conservati per un massimo di 6 mesi. Maggiori dettagli nell’<a href="#privacy-policy">informativa privacy</a>.
+            I dati inviati tramite questo modulo saranno usati solo per ricontattarti in merito alla tua richiesta e saranno conservati per un massimo di 6 mesi. Maggiori dettagli nell’<a href="#privacy-policy" onclick="document.getElementById('privacy-details').open = true;">informativa privacy</a>.
           </div>
 
           <form action="https://api.web3forms.com/submit" method="POST" id="lead-form" novalidate>
@@ -620,7 +648,7 @@
 
             <label class="privacy">
               <input id="privacy-consent" name="privacy_accettata" type="checkbox" value="Sì" required />
-              <span>Ho letto l’<a href="#privacy-policy">informativa privacy</a> e dichiaro di averne compreso il contenuto.</span>
+              <span>Ho letto l’<a href="#privacy-policy" onclick="document.getElementById('privacy-details').open = true;">informativa privacy</a> e dichiaro di averne compreso il contenuto.</span>
             </label>
 
             <button class="button" type="submit" id="submit-button">Richiedi analisi gratuita</button>
@@ -678,77 +706,79 @@
 
   <section class="privacy-section" id="privacy-policy">
     <div class="container">
-      <div class="privacy-box">
-        <h3>Privacy Policy</h3>
+      <details id="privacy-details" class="privacy-accordion">
+        <summary>Informativa privacy</summary>
 
-        <p><strong>Ultimo aggiornamento:</strong> 23/03/2026</p>
+        <div class="privacy-box">
+          <p><strong>Ultimo aggiornamento:</strong> 23/03/2026</p>
 
-        <p>
-          La presente informativa descrive le modalità di trattamento dei dati personali raccolti tramite questo sito web.
-        </p>
+          <p>
+            La presente informativa descrive le modalità di trattamento dei dati personali raccolti tramite questo sito web.
+          </p>
 
-        <p>
-          <strong>1. Titolare del trattamento</strong><br>
-          Il titolare del trattamento è Davide Gregoris, contattabile all’indirizzo email:
-          <a href="mailto:gregoris.soluzioni@gmail.com">gregoris.soluzioni@gmail.com</a>.
-        </p>
+          <p>
+            <strong>1. Titolare del trattamento</strong><br>
+            Il titolare del trattamento è Davide Gregoris, contattabile all’indirizzo email:
+            <a href="mailto:gregoris.soluzioni@gmail.com">gregoris.soluzioni@gmail.com</a>.
+          </p>
 
-        <p>
-          <strong>2. Dati personali trattati</strong><br>
-          Tramite il modulo di contatto possono essere raccolti i seguenti dati personali: nome, cognome, numero di telefono, indirizzo email, comune, attuale fornitore o richiesta, contenuto del messaggio inviato e ogni altra informazione eventualmente fornita spontaneamente dall’utente.
-        </p>
+          <p>
+            <strong>2. Dati personali trattati</strong><br>
+            Tramite il modulo di contatto possono essere raccolti i seguenti dati personali: nome, cognome, numero di telefono, indirizzo email, comune, attuale fornitore o richiesta, contenuto del messaggio inviato e ogni altra informazione eventualmente fornita spontaneamente dall’utente.
+          </p>
 
-        <p>
-          <strong>3. Finalità del trattamento</strong><br>
-          I dati personali sono trattati esclusivamente per ricevere e gestire la richiesta inviata dall’utente tramite il modulo di contatto, ricontattare l’utente in merito alla richiesta di analisi gratuita o consulenza relativa a luce, gas o internet, gestire eventuali comunicazioni successive strettamente collegate alla richiesta ricevuta e adempiere a eventuali obblighi di legge.
-        </p>
+          <p>
+            <strong>3. Finalità del trattamento</strong><br>
+            I dati personali sono trattati esclusivamente per ricevere e gestire la richiesta inviata dall’utente tramite il modulo di contatto, ricontattare l’utente in merito alla richiesta di analisi gratuita o consulenza relativa a luce, gas o internet, gestire eventuali comunicazioni successive strettamente collegate alla richiesta ricevuta e adempiere a eventuali obblighi di legge.
+          </p>
 
-        <p>
-          <strong>4. Base giuridica del trattamento</strong><br>
-          Il trattamento dei dati si basa sulla necessità di dare seguito alla richiesta dell’interessato e di adottare eventuali misure precontrattuali richieste dallo stesso, nonché, ove necessario, sull’adempimento di obblighi di legge.
-        </p>
+          <p>
+            <strong>4. Base giuridica del trattamento</strong><br>
+            Il trattamento dei dati si basa sulla necessità di dare seguito alla richiesta dell’interessato e di adottare eventuali misure precontrattuali richieste dallo stesso, nonché, ove necessario, sull’adempimento di obblighi di legge.
+          </p>
 
-        <p>
-          <strong>5. Natura del conferimento dei dati</strong><br>
-          Il conferimento dei dati contrassegnati come obbligatori è necessario per poter inviare la richiesta e ricevere un ricontatto. Il mancato conferimento di tali dati può impedire l’evasione della richiesta. I dati indicati come facoltativi possono essere omessi senza pregiudicare l’invio del modulo.
-        </p>
+          <p>
+            <strong>5. Natura del conferimento dei dati</strong><br>
+            Il conferimento dei dati contrassegnati come obbligatori è necessario per poter inviare la richiesta e ricevere un ricontatto. Il mancato conferimento di tali dati può impedire l’evasione della richiesta. I dati indicati come facoltativi possono essere omessi senza pregiudicare l’invio del modulo.
+          </p>
 
-        <p>
-          <strong>6. Modalità di trattamento</strong><br>
-          I dati sono trattati con strumenti elettronici e con modalità organizzative idonee a garantire sicurezza, riservatezza e integrità delle informazioni trattate.
-        </p>
+          <p>
+            <strong>6. Modalità di trattamento</strong><br>
+            I dati sono trattati con strumenti elettronici e con modalità organizzative idonee a garantire sicurezza, riservatezza e integrità delle informazioni trattate.
+          </p>
 
-        <p>
-          <strong>7. Periodo di conservazione</strong><br>
-          I dati raccolti tramite il modulo di contatto sono conservati per un periodo massimo di 6 mesi dalla ricezione della richiesta, salvo necessità di ulteriore conservazione connesse alla gestione del rapporto, a richieste dell’interessato o ad obblighi di legge.
-        </p>
+          <p>
+            <strong>7. Periodo di conservazione</strong><br>
+            I dati raccolti tramite il modulo di contatto sono conservati per un periodo massimo di 6 mesi dalla ricezione della richiesta, salvo necessità di ulteriore conservazione connesse alla gestione del rapporto, a richieste dell’interessato o ad obblighi di legge.
+          </p>
 
-        <p>
-          <strong>8. Destinatari dei dati</strong><br>
-          I dati possono essere trattati, per conto del titolare, da fornitori di servizi tecnici e digitali necessari al funzionamento del sito e alla gestione delle richieste, tra cui servizi di hosting del sito e servizi di inoltro o ricezione delle richieste inviate tramite form online.
-        </p>
+          <p>
+            <strong>8. Destinatari dei dati</strong><br>
+            I dati possono essere trattati, per conto del titolare, da fornitori di servizi tecnici e digitali necessari al funzionamento del sito e alla gestione delle richieste, tra cui servizi di hosting del sito e servizi di inoltro o ricezione delle richieste inviate tramite form online.
+          </p>
 
-        <p>
-          <strong>9. Trasferimento dei dati</strong><br>
-          Alcuni fornitori tecnici utilizzati per l’hosting del sito o per la gestione del modulo di contatto potrebbero comportare il trasferimento di dati verso Paesi situati al di fuori dello Spazio Economico Europeo. In tali casi il trattamento avviene nel rispetto delle garanzie previste dalla normativa applicabile.
-        </p>
+          <p>
+            <strong>9. Trasferimento dei dati</strong><br>
+            Alcuni fornitori tecnici utilizzati per l’hosting del sito o per la gestione del modulo di contatto potrebbero comportare il trasferimento di dati verso Paesi situati al di fuori dello Spazio Economico Europeo. In tali casi il trattamento avviene nel rispetto delle garanzie previste dalla normativa applicabile.
+          </p>
 
-        <p>
-          <strong>10. Diritti dell’interessato</strong><br>
-          L’interessato può esercitare i diritti di accesso, rettifica, cancellazione, limitazione del trattamento, opposizione e gli altri diritti eventualmente applicabili previsti dalla normativa vigente, oltre a poter proporre reclamo all’autorità di controllo competente.
-        </p>
+          <p>
+            <strong>10. Diritti dell’interessato</strong><br>
+            L’interessato può esercitare i diritti di accesso, rettifica, cancellazione, limitazione del trattamento, opposizione e gli altri diritti eventualmente applicabili previsti dalla normativa vigente, oltre a poter proporre reclamo all’autorità di controllo competente.
+          </p>
 
-        <p>
-          <strong>11. Contatti</strong><br>
-          Per esercitare i propri diritti o richiedere informazioni sul trattamento dei dati personali è possibile scrivere a:
-          <a href="mailto:gregoris.soluzioni@gmail.com">gregoris.soluzioni@gmail.com</a>.
-        </p>
+          <p>
+            <strong>11. Contatti</strong><br>
+            Per esercitare i propri diritti o richiedere informazioni sul trattamento dei dati personali è possibile scrivere a:
+            <a href="mailto:gregoris.soluzioni@gmail.com">gregoris.soluzioni@gmail.com</a>.
+          </p>
 
-        <p>
-          <strong>12. Cookie e strumenti tecnici</strong><br>
-          Questo sito utilizza esclusivamente strumenti tecnici necessari al suo funzionamento. Eventuali strumenti ulteriori di analisi, marketing o profilazione saranno gestiti nel rispetto della normativa applicabile.
-        </p>
-      </div>
+          <p>
+            <strong>12. Cookie e strumenti tecnici</strong><br>
+            Questo sito utilizza esclusivamente strumenti tecnici necessari al suo funzionamento. Eventuali strumenti ulteriori di analisi, marketing o profilazione saranno gestiti nel rispetto della normativa applicabile.
+          </p>
+        </div>
+      </details>
     </div>
   </section>
 
@@ -760,7 +790,7 @@
       </div>
 
       <div class="footer-links">
-        <a href="#privacy-policy">Privacy Policy</a>
+        <a href="#privacy-policy" onclick="document.getElementById('privacy-details').open = true;">Privacy Policy</a>
         <a href="mailto:gregoris.soluzioni@gmail.com">gregoris.soluzioni@gmail.com</a>
       </div>
     </div>
