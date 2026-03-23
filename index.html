@@ -1,34 +1,748 @@
-.whatsapp-float{
-  position:fixed;
-  right:18px;
-  bottom:18px;
-  width:58px;
-  height:58px;
-  border-radius:999px;
-  background:#25D366;
-  color:#fff;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  box-shadow:0 10px 25px rgba(0,0,0,0.18);
-  z-index:999;
-  transition:transform .18s ease, box-shadow .18s ease, opacity .18s ease;
-}
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Analisi gratuita bollette di casa</title>
+  <meta
+    name="description"
+    content="Richiedi un'analisi gratuita per capire se puoi risparmiare su luce, gas o internet di casa."
+  />
+  <style>
+    :root{
+      --bg:#f8fafc;
+      --card:#ffffff;
+      --text:#0f172a;
+      --muted:#64748b;
+      --line:#e2e8f0;
+      --soft:#f1f5f9;
+      --accent:#0f172a;
+      --accent-2:#1e293b;
+      --success:#0f766e;
+      --danger:#b91c1c;
+      --shadow:0 10px 30px rgba(15,23,42,0.08);
+      --max:1120px;
+      --radius:24px;
+    }
 
-.whatsapp-float:hover{
-  transform:translateY(-2px);
-  box-shadow:0 14px 30px rgba(0,0,0,0.22);
-}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:linear-gradient(180deg,#ffffff 0%,#f8fafc 45%,#ffffff 100%);
+      color:var(--text);
+      line-height:1.5;
+    }
 
-.whatsapp-float svg{
-  width:28px;
-  height:28px;
-  fill:currentColor;
-}
+    a{color:inherit;text-decoration:none}
+    .container{max-width:var(--max);margin:0 auto;padding:0 18px}
 
-@media (min-width: 760px){
-  .whatsapp-float{
-    right:24px;
-    bottom:24px;
-  }
-}
+    .topbar{
+      padding:20px 0 8px;
+      display:flex;
+      flex-direction:column;
+      align-items:flex-start;
+      gap:10px;
+    }
+
+    .brand-title{
+      font-size:1.05rem;
+      font-weight:700;
+      letter-spacing:-0.02em;
+    }
+
+    .brand-sub{
+      font-size:0.92rem;
+      color:var(--muted);
+      margin-top:3px;
+    }
+
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:9px 13px;
+      border:1px solid var(--line);
+      background:#fff;
+      border-radius:999px;
+      font-size:0.86rem;
+      color:#334155;
+      font-weight:600;
+    }
+
+    .hero{
+      display:grid;
+      gap:22px;
+      padding:14px 0 42px;
+    }
+
+    .hero-copy{
+      display:grid;
+      gap:16px;
+    }
+
+    .tags{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+    }
+
+    .tag{
+      background:var(--soft);
+      border:1px solid var(--line);
+      color:#334155;
+      padding:8px 12px;
+      border-radius:999px;
+      font-size:0.84rem;
+      font-weight:700;
+    }
+
+    h1{
+      margin:0;
+      font-size:2rem;
+      line-height:1.04;
+      letter-spacing:-0.05em;
+      max-width:690px;
+    }
+
+    .lead{
+      margin:0;
+      font-size:1rem;
+      line-height:1.72;
+      color:var(--muted);
+      max-width:620px;
+    }
+
+    .benefits{
+      display:grid;
+      gap:10px;
+    }
+
+    .benefit{
+      display:flex;
+      align-items:flex-start;
+      gap:10px;
+      color:#334155;
+      font-size:0.95rem;
+    }
+
+    .benefit-dot{
+      width:22px;
+      height:22px;
+      border-radius:999px;
+      display:grid;
+      place-items:center;
+      background:#ecfeff;
+      color:var(--success);
+      border:1px solid #ccfbf1;
+      font-size:0.8rem;
+      flex:0 0 22px;
+      margin-top:1px;
+    }
+
+    .hero-layout{
+      display:grid;
+      gap:20px;
+    }
+
+    .form-card{
+      background:var(--card);
+      border:1px solid rgba(226,232,240,0.9);
+      border-radius:28px;
+      box-shadow:var(--shadow);
+      padding:20px;
+    }
+
+    .form-card h2{
+      margin:0;
+      font-size:1.45rem;
+      line-height:1.08;
+      letter-spacing:-0.03em;
+    }
+
+    .form-card p{
+      margin:10px 0 0;
+      color:var(--muted);
+      line-height:1.65;
+      font-size:0.94rem;
+    }
+
+    .form-note{
+      margin-top:10px;
+      font-size:0.88rem;
+      color:#475569;
+      background:#f8fafc;
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:10px 12px;
+    }
+
+    .grid-two{
+      display:grid;
+      gap:12px;
+      margin-top:18px;
+    }
+
+    .field{
+      display:grid;
+      gap:7px;
+    }
+
+    .field label{
+      font-size:0.92rem;
+      font-weight:600;
+      color:#1e293b;
+    }
+
+    .optional{
+      font-weight:500;
+      color:var(--muted);
+      font-size:0.82rem;
+      margin-left:6px;
+    }
+
+    .field input,
+    .field textarea{
+      width:100%;
+      border:1px solid var(--line);
+      background:#fff;
+      border-radius:16px;
+      padding:14px 15px;
+      font:inherit;
+      color:var(--text);
+      outline:none;
+      transition:border-color .18s ease, box-shadow .18s ease;
+      -webkit-appearance:none;
+      appearance:none;
+    }
+
+    .field textarea{
+      min-height:110px;
+      resize:vertical;
+    }
+
+    .field input:focus,
+    .field textarea:focus{
+      border-color:#94a3b8;
+      box-shadow:0 0 0 4px rgba(148,163,184,0.12);
+    }
+
+    .privacy{
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      padding:14px;
+      border-radius:16px;
+      background:#f8fafc;
+      border:1px solid var(--line);
+      color:var(--muted);
+      font-size:0.9rem;
+      line-height:1.58;
+      margin-top:14px;
+    }
+
+    .privacy input{
+      margin-top:3px;
+      width:17px;
+      height:17px;
+      flex:0 0 17px;
+    }
+
+    .button{
+      width:100%;
+      border:0;
+      background:var(--accent);
+      color:#fff;
+      border-radius:18px;
+      padding:16px 18px;
+      font:inherit;
+      font-size:1rem;
+      font-weight:800;
+      cursor:pointer;
+      transition:transform .15s ease, opacity .15s ease;
+      margin-top:16px;
+      min-height:54px;
+    }
+
+    .button:hover{transform:translateY(-1px);opacity:.97}
+    .button:disabled{opacity:.75;cursor:not-allowed;transform:none}
+
+    .trust-copy{
+      margin-top:12px;
+      text-align:center;
+      color:var(--muted);
+      font-size:0.88rem;
+      line-height:1.5;
+    }
+
+    .form-result{
+      margin-top:12px;
+      min-height:24px;
+      font-size:0.94rem;
+      text-align:center;
+      color:var(--muted);
+      line-height:1.5;
+    }
+
+    .form-result.success{color:var(--success)}
+    .form-result.error{color:var(--danger)}
+    .hidden{display:none !important;}
+
+    .cards{
+      display:grid;
+      gap:10px;
+      margin-top:8px;
+    }
+
+    .mini-card{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:14px;
+      box-shadow:0 4px 16px rgba(15,23,42,0.04);
+    }
+
+    .mini-card-icon{
+      font-size:1.15rem;
+      margin-bottom:8px;
+      line-height:1;
+    }
+
+    .mini-card-title{
+      font-size:0.97rem;
+      font-weight:700;
+      letter-spacing:-0.02em;
+      margin:0 0 4px;
+    }
+
+    .mini-card-text{
+      margin:0;
+      color:var(--muted);
+      font-size:0.92rem;
+      line-height:1.55;
+    }
+
+    .steps{
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+      background:#f8fafc;
+    }
+
+    .steps-grid{
+      padding:20px 0;
+      display:grid;
+      gap:12px;
+    }
+
+    .step{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:16px;
+    }
+
+    .step .small{
+      color:var(--muted);
+      font-size:0.74rem;
+      font-weight:800;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      margin-bottom:8px;
+    }
+
+    .step p{
+      margin:0;
+      color:#334155;
+      line-height:1.6;
+      font-size:0.95rem;
+    }
+
+    .privacy-section{
+      padding:26px 0 8px;
+    }
+
+    .privacy-box{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:20px;
+      padding:18px;
+    }
+
+    .privacy-box h3{
+      margin:0 0 10px;
+      font-size:1rem;
+      letter-spacing:-0.02em;
+    }
+
+    .privacy-box p{
+      margin:0;
+      color:var(--muted);
+      font-size:0.92rem;
+      line-height:1.65;
+    }
+
+    footer{
+      padding:18px 0 34px;
+      color:var(--muted);
+      font-size:0.92rem;
+    }
+
+    .footer-inner{
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+      align-items:flex-start;
+    }
+
+    .footer-brand{
+      color:#334155;
+      font-weight:700;
+      margin-bottom:4px;
+    }
+
+    .footer-links{
+      display:flex;
+      flex-wrap:wrap;
+      gap:14px;
+      font-size:0.9rem;
+    }
+
+    .footer-links a{
+      color:#475569;
+    }
+
+    .whatsapp-float{
+      position:fixed;
+      right:18px;
+      bottom:18px;
+      width:58px;
+      height:58px;
+      border-radius:999px;
+      background:#25D366;
+      color:#fff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      box-shadow:0 10px 25px rgba(0,0,0,0.18);
+      z-index:999;
+      transition:transform .18s ease, box-shadow .18s ease, opacity .18s ease;
+    }
+
+    .whatsapp-float:hover{
+      transform:translateY(-2px);
+      box-shadow:0 14px 30px rgba(0,0,0,0.22);
+    }
+
+    .whatsapp-float svg{
+      width:28px;
+      height:28px;
+      fill:currentColor;
+    }
+
+    @media (min-width: 760px){
+      .container{padding:0 24px}
+
+      .topbar{
+        padding:28px 0 10px;
+        flex-direction:row;
+        align-items:center;
+        justify-content:space-between;
+      }
+
+      .hero{
+        padding:20px 0 30px;
+      }
+
+      .hero-layout{
+        grid-template-columns:1fr;
+      }
+
+      h1{font-size:3.5rem}
+      .lead{font-size:1.06rem}
+
+      .grid-two{
+        grid-template-columns:1fr 1fr;
+        gap:14px;
+      }
+
+      .cards{
+        grid-template-columns:repeat(3,1fr);
+      }
+
+      .steps-grid{
+        grid-template-columns:repeat(3,1fr);
+        gap:16px;
+        padding:26px 0;
+      }
+
+      .footer-inner{
+        flex-direction:row;
+        justify-content:space-between;
+        align-items:center;
+      }
+
+      .whatsapp-float{
+        right:24px;
+        bottom:24px;
+      }
+    }
+
+    @media (min-width: 1024px){
+      .hero-layout{
+        grid-template-columns:1.02fr 0.98fr;
+        align-items:start;
+        gap:42px;
+      }
+
+      h1{
+        font-size:4.2rem;
+        max-width:720px;
+      }
+
+      .form-card{
+        padding:28px;
+      }
+
+      .form-card h2{
+        font-size:1.9rem;
+      }
+
+      .hero{
+        padding:26px 0 34px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="container">
+    <div class="topbar">
+      <div>
+        <div class="brand-title">Davide Gregoris</div>
+        <div class="brand-sub">Analisi gratuita bollette di casa</div>
+      </div>
+      <div class="badge">Senza impegno</div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="hero-layout">
+        <div class="hero-copy">
+          <div class="tags">
+            <span class="tag">Luce</span>
+            <span class="tag">Gas</span>
+            <span class="tag">Internet</span>
+          </div>
+
+          <h1>Scopri se stai pagando più del necessario!</h1>
+
+          <p class="lead">
+            Analizzo gratuitamente la tua situazione e ti ricontatto senza impegno per capire se ci sono margini di risparmio.
+          </p>
+
+          <div class="benefits">
+            <div class="benefit"><span class="benefit-dot">✓</span><span>Nessun costo e nessun obbligo di attivazione</span></div>
+            <div class="benefit"><span class="benefit-dot">✓</span><span>Ti ricontatto personalmente in modo semplice e chiaro</span></div>
+            <div class="benefit"><span class="benefit-dot">✓</span><span>Prima analisi rapida della tua situazione attuale</span></div>
+          </div>
+        </div>
+
+        <div class="form-card">
+          <h2>Richiedi la tua analisi gratuita</h2>
+          <p>
+            Compila il form qui sotto. Ti ricontatto per capire se ci sono margini di miglioramento sulla tua spesa di casa.
+          </p>
+
+          <div class="form-note">
+            Campi essenziali: nome, telefono, email e messaggio. Gli altri sono facoltativi.
+          </div>
+
+          <form action="https://api.web3forms.com/submit" method="POST" id="lead-form" novalidate>
+            <input type="hidden" name="access_key" value="579d70b2-c3bc-446b-b048-5bb8fc01b2eb" />
+            <input type="hidden" name="subject" value="Nuova richiesta dal sito - Analisi bollette" />
+            <input type="hidden" name="from_name" value="Landing Davide Gregoris" />
+            <input type="checkbox" name="botcheck" class="hidden" tabindex="-1" autocomplete="off" />
+
+            <div class="grid-two">
+              <div class="field">
+                <label for="nome">Nome</label>
+                <input id="nome" name="nome" type="text" placeholder="Il tuo nome" required />
+              </div>
+              <div class="field">
+                <label for="cognome">Cognome</label>
+                <input id="cognome" name="cognome" type="text" placeholder="Il tuo cognome" required />
+              </div>
+            </div>
+
+            <div class="grid-two">
+              <div class="field">
+                <label for="telefono">Telefono</label>
+                <input id="telefono" name="telefono" type="tel" placeholder="Numero di telefono" required />
+              </div>
+              <div class="field">
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" placeholder="La tua email" required />
+              </div>
+            </div>
+
+            <div class="field" style="margin-top:12px;">
+              <label for="comune">Comune <span class="optional">(facoltativo)</span></label>
+              <input id="comune" name="comune" type="text" placeholder="Dove abiti" />
+            </div>
+
+            <div class="field" style="margin-top:12px;">
+              <label for="fornitore">Attuale fornitore o richiesta <span class="optional">(facoltativo)</span></label>
+              <input id="fornitore" name="fornitore_o_richiesta" type="text" placeholder="Es. Enel, Sorgenia, TIM, Fastweb..." />
+            </div>
+
+            <div class="field" style="margin-top:12px;">
+              <label for="messaggio">Messaggio</label>
+              <textarea id="messaggio" name="message" placeholder="Scrivi qui se vuoi essere ricontattato per luce, gas o internet" required></textarea>
+            </div>
+
+            <label class="privacy">
+              <input id="privacy-consent" name="privacy_accettata" type="checkbox" value="Sì" required />
+              <span>Acconsento al trattamento dei miei dati per essere ricontattato in merito alla mia richiesta di analisi gratuita.</span>
+            </label>
+
+            <button class="button" type="submit" id="submit-button">Richiedi analisi gratuita</button>
+
+            <div class="form-result" id="form-result"></div>
+
+            <div class="trust-copy">
+              Ti ricontatto personalmente, senza costi e senza obbligo di attivazione.
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="cards">
+        <div class="mini-card">
+          <div class="mini-card-icon">📄</div>
+          <div class="mini-card-title">Analisi offerta</div>
+          <p class="mini-card-text">Controllo rapido della tua situazione attuale e primo orientamento chiaro.</p>
+        </div>
+        <div class="mini-card">
+          <div class="mini-card-icon">⚡</div>
+          <div class="mini-card-title">Luce e gas</div>
+          <p class="mini-card-text">Valutazione delle opzioni più adatte per la casa, senza tecnicismi inutili.</p>
+        </div>
+        <div class="mini-card">
+          <div class="mini-card-icon">📶</div>
+          <div class="mini-card-title">Anche internet</div>
+          <p class="mini-card-text">Verifica se puoi ottimizzare anche la linea di casa e la spesa mensile.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <section class="steps">
+    <div class="container">
+      <div class="steps-grid">
+        <div class="step">
+          <div class="small">1. Lascia i dati</div>
+          <p>Compili il form in meno di un minuto.</p>
+        </div>
+        <div class="step">
+          <div class="small">2. Ti ricontatto</div>
+          <p>Valutiamo insieme la tua situazione in modo chiaro e veloce.</p>
+        </div>
+        <div class="step">
+          <div class="small">3. Capisci se conviene</div>
+          <p>Ricevi un primo orientamento semplice, senza pressione e senza impegno.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="privacy-section" id="privacy-policy">
+    <div class="container">
+      <div class="privacy-box">
+        <h3>Informativa privacy sintetica</h3>
+        <p>
+          I dati inviati tramite questo modulo vengono utilizzati esclusivamente per ricontattarti in merito alla tua richiesta di analisi gratuita. Non verranno usati per finalità diverse da quelle collegate al ricontatto commerciale richiesto. Per una versione completa dell’informativa puoi aggiungere qui il link alla tua privacy policy estesa quando sarà pronta.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">Davide Gregoris</div>
+        <div>Analisi gratuita per bollette di casa</div>
+      </div>
+
+      <div class="footer-links">
+        <a href="#privacy-policy">Privacy</a>
+        <a href="mailto:gregoris.soluzioni@gmail.com">gregoris.soluzioni@gmail.com</a>
+      </div>
+    </div>
+  </footer>
+
+  <a
+    href="https://wa.me/393454005771?text=Ciao%20Davide,%20vorrei%20una%20consulenza%20gratuita%20sulla%20bolletta."
+    class="whatsapp-float"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Scrivimi su WhatsApp"
+  >
+    <svg viewBox="0 0 32 32" aria-hidden="true">
+      <path d="M19.11 17.21c-.29-.15-1.7-.84-1.96-.94-.26-.1-.45-.15-.64.15-.19.29-.74.94-.9 1.13-.17.19-.33.22-.62.07-.29-.15-1.2-.44-2.29-1.4-.85-.76-1.43-1.69-1.59-1.98-.17-.29-.02-.45.12-.6.13-.13.29-.33.43-.5.14-.17.19-.29.29-.48.1-.19.05-.36-.02-.5-.07-.15-.64-1.54-.88-2.11-.23-.55-.47-.48-.64-.49h-.55c-.19 0-.5.07-.76.36s-1 1-.1 2.43c.9 1.43 1.29 2.02 2.78 3.27 1.49 1.25 2.08 1.55 3.5 2.11 1.42.57 1.71.48 2.02.45.31-.02 1-.41 1.14-.81.14-.4.14-.74.1-.81-.05-.07-.24-.12-.52-.26zM16.03 3.2c-6.99 0-12.67 5.67-12.67 12.66 0 2.23.58 4.4 1.67 6.31L3.2 28.8l6.78-1.78a12.6 12.6 0 0 0 6.04 1.54h.01c6.98 0 12.67-5.68 12.67-12.67 0-3.38-1.31-6.56-3.7-8.95A12.57 12.57 0 0 0 16.03 3.2zm0 23.22h-.01a10.48 10.48 0 0 1-5.33-1.46l-.38-.23-4.02 1.05 1.07-3.92-.25-.4a10.47 10.47 0 0 1-1.61-5.56c0-5.8 4.72-10.52 10.53-10.52 2.81 0 5.45 1.09 7.43 3.08a10.43 10.43 0 0 1 3.08 7.44c0 5.81-4.73 10.52-10.51 10.52z"/>
+    </svg>
+  </a>
+
+  <script>
+    const form = document.getElementById("lead-form");
+    const result = document.getElementById("form-result");
+    const submitButton = document.getElementById("submit-button");
+
+    form.addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+
+      submitButton.disabled = true;
+      submitButton.textContent = "Invio in corso...";
+      result.className = "form-result";
+      result.textContent = "Invio in corso...";
+
+      try {
+        const formData = new FormData(form);
+        const object = Object.fromEntries(formData);
+        const json = JSON.stringify(object);
+
+        const response = await fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+          },
+          body: json
+        });
+
+        const data = await response.json();
+
+        if (response.status === 200) {
+          result.className = "form-result success";
+          result.textContent = "Richiesta inviata con successo. Ti ricontatterò al più presto.";
+          form.reset();
+        } else {
+          result.className = "form-result error";
+          result.textContent = data.message || "Si è verificato un errore. Riprova tra poco.";
+        }
+      } catch (error) {
+        result.className = "form-result error";
+        result.textContent = "Si è verificato un errore. Riprova tra poco.";
+      } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = "Richiedi analisi gratuita";
+      }
+    });
+  </script>
+</body>
+</html>
