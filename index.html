@@ -3,8 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Consulenza gratuita bollette di casa</title>
-  <meta name="description" content="Richiedi una consulenza gratuita per capire se puoi risparmiare su luce, gas e internet di casa." />
+  <title>Analisi gratuita bollette di casa</title>
+  <meta
+    name="description"
+    content="Richiedi un'analisi gratuita per capire se puoi risparmiare su luce, gas o internet di casa."
+  />
   <style>
     :root{
       --bg:#f8fafc;
@@ -14,22 +17,27 @@
       --line:#e2e8f0;
       --soft:#f1f5f9;
       --accent:#0f172a;
+      --accent-2:#1e293b;
       --success:#0f766e;
       --danger:#b91c1c;
       --shadow:0 10px 30px rgba(15,23,42,0.08);
       --max:1120px;
+      --radius:24px;
     }
+
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
     body{
       margin:0;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background:linear-gradient(180deg,#ffffff 0%,#f8fafc 42%,#ffffff 100%);
+      font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:linear-gradient(180deg,#ffffff 0%,#f8fafc 45%,#ffffff 100%);
       color:var(--text);
       line-height:1.5;
     }
+
     a{color:inherit;text-decoration:none}
     .container{max-width:var(--max);margin:0 auto;padding:0 18px}
+
     .topbar{
       padding:20px 0 8px;
       display:flex;
@@ -37,81 +45,94 @@
       align-items:flex-start;
       gap:10px;
     }
+
     .brand-title{
       font-size:1.05rem;
       font-weight:700;
       letter-spacing:-0.02em;
     }
+
     .brand-sub{
       font-size:0.92rem;
       color:var(--muted);
       margin-top:3px;
     }
+
     .badge{
       display:inline-flex;
       align-items:center;
+      gap:8px;
       padding:9px 13px;
       border:1px solid var(--line);
       background:#fff;
       border-radius:999px;
       font-size:0.86rem;
       color:#334155;
-      white-space:nowrap;
       font-weight:600;
     }
+
     .hero{
       display:grid;
       gap:22px;
-      padding:10px 0 44px;
+      padding:14px 0 42px;
     }
-    .hero-copy{order:1}
-    .hero-form{order:2}
+
+    .hero-copy{
+      display:grid;
+      gap:16px;
+    }
+
     .tags{
       display:flex;
       flex-wrap:wrap;
       gap:8px;
-      margin-bottom:14px;
     }
+
     .tag{
       background:var(--soft);
       border:1px solid var(--line);
       color:#334155;
       padding:8px 12px;
       border-radius:999px;
-      font-size:0.85rem;
+      font-size:0.84rem;
       font-weight:700;
     }
+
     h1{
       margin:0;
       font-size:2.2rem;
       line-height:1.02;
       letter-spacing:-0.05em;
-      max-width:680px;
+      max-width:690px;
     }
+
     .underline{
       text-decoration:underline;
       text-decoration-thickness:4px;
       text-underline-offset:6px;
     }
+
     .lead{
-      margin-top:14px;
+      margin:0;
       font-size:1rem;
       line-height:1.72;
       color:var(--muted);
       max-width:620px;
     }
+
     .benefits{
       display:grid;
       gap:10px;
-      margin-top:18px;
     }
+
     .benefit{
       display:flex;
       align-items:flex-start;
       gap:10px;
       color:#334155;
-      font-size:0.96rem;
+      font-size:0.95rem;
     }
+
     .benefit-dot{
       width:22px;
       height:22px;
@@ -125,63 +146,68 @@
       flex:0 0 22px;
       margin-top:1px;
     }
-    .mini-cards{
+
+    .hero-layout{
       display:grid;
-      gap:10px;
-      margin-top:20px;
+      gap:20px;
     }
-    .mini-card{
-      background:var(--card);
-      border:1px solid var(--line);
-      border-radius:18px;
-      padding:14px;
-      box-shadow:0 4px 16px rgba(15,23,42,0.04);
-    }
-    .mini-card-title{
-      font-size:0.98rem;
-      font-weight:700;
-      letter-spacing:-0.02em;
-      margin:0 0 4px;
-    }
-    .mini-card-text{
-      margin:0;
-      color:var(--muted);
-      font-size:0.92rem;
-      line-height:1.55;
-    }
+
     .form-card{
       background:var(--card);
-      border:1px solid rgba(226,232,240,0.85);
+      border:1px solid rgba(226,232,240,0.9);
       border-radius:28px;
       box-shadow:var(--shadow);
       padding:20px;
     }
+
     .form-card h2{
       margin:0;
-      font-size:1.6rem;
+      font-size:1.45rem;
       line-height:1.08;
       letter-spacing:-0.03em;
     }
+
     .form-card p{
       margin:10px 0 0;
       color:var(--muted);
       line-height:1.65;
       font-size:0.94rem;
     }
+
+    .form-note{
+      margin-top:10px;
+      font-size:0.88rem;
+      color:#475569;
+      background:#f8fafc;
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:10px 12px;
+    }
+
     .grid-two{
       display:grid;
       gap:12px;
       margin-top:18px;
     }
+
     .field{
       display:grid;
       gap:7px;
     }
+
     .field label{
       font-size:0.92rem;
       font-weight:600;
       color:#1e293b;
     }
+
+    .optional{
+      font-weight:500;
+      color:var(--muted);
+      font-size:0.82rem;
+      margin-left:6px;
+    }
+
     .field input,
     .field textarea{
       width:100%;
@@ -196,15 +222,18 @@
       -webkit-appearance:none;
       appearance:none;
     }
+
     .field textarea{
       min-height:110px;
       resize:vertical;
     }
+
     .field input:focus,
     .field textarea:focus{
       border-color:#94a3b8;
       box-shadow:0 0 0 4px rgba(148,163,184,0.12);
     }
+
     .privacy{
       display:flex;
       gap:10px;
@@ -218,12 +247,14 @@
       line-height:1.58;
       margin-top:14px;
     }
+
     .privacy input{
       margin-top:3px;
       width:17px;
       height:17px;
       flex:0 0 17px;
     }
+
     .button{
       width:100%;
       border:0;
@@ -239,19 +270,18 @@
       margin-top:16px;
       min-height:54px;
     }
+
     .button:hover{transform:translateY(-1px);opacity:.97}
     .button:disabled{opacity:.75;cursor:not-allowed;transform:none}
-    .safe-note{
+
+    .trust-copy{
       margin-top:12px;
-      display:flex;
-      gap:8px;
-      justify-content:center;
-      align-items:center;
+      text-align:center;
       color:var(--muted);
       font-size:0.88rem;
-      text-align:center;
       line-height:1.5;
     }
+
     .form-result{
       margin-top:12px;
       min-height:24px;
@@ -260,25 +290,58 @@
       color:var(--muted);
       line-height:1.5;
     }
+
     .form-result.success{color:var(--success)}
     .form-result.error{color:var(--danger)}
     .hidden{display:none !important;}
+
+    .cards{
+      display:grid;
+      gap:10px;
+      margin-top:8px;
+    }
+
+    .mini-card{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:14px;
+      box-shadow:0 4px 16px rgba(15,23,42,0.04);
+    }
+
+    .mini-card-title{
+      font-size:0.97rem;
+      font-weight:700;
+      letter-spacing:-0.02em;
+      margin:0 0 4px;
+    }
+
+    .mini-card-text{
+      margin:0;
+      color:var(--muted);
+      font-size:0.92rem;
+      line-height:1.55;
+    }
+
     .steps{
       border-top:1px solid var(--line);
       border-bottom:1px solid var(--line);
       background:#f8fafc;
     }
+
     .steps-grid{
       padding:20px 0;
       display:grid;
       gap:12px;
     }
+
     .step{
       background:#fff;
       border:1px solid var(--line);
       border-radius:18px;
       padding:16px;
     }
+
     .step .small{
       color:var(--muted);
       font-size:0.74rem;
@@ -287,73 +350,134 @@
       text-transform:uppercase;
       margin-bottom:8px;
     }
+
     .step p{
       margin:0;
       color:#334155;
       line-height:1.6;
       font-size:0.95rem;
     }
+
+    .privacy-section{
+      padding:26px 0 8px;
+    }
+
+    .privacy-box{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:20px;
+      padding:18px;
+    }
+
+    .privacy-box h3{
+      margin:0 0 10px;
+      font-size:1rem;
+      letter-spacing:-0.02em;
+    }
+
+    .privacy-box p{
+      margin:0;
+      color:var(--muted);
+      font-size:0.92rem;
+      line-height:1.65;
+    }
+
     footer{
-      padding:22px 0 34px;
+      padding:18px 0 34px;
       color:var(--muted);
       font-size:0.92rem;
     }
+
     .footer-inner{
       display:flex;
       flex-direction:column;
-      gap:10px;
+      gap:12px;
       align-items:flex-start;
     }
+
     .footer-brand{
       color:#334155;
       font-weight:700;
       margin-bottom:4px;
     }
 
+    .footer-links{
+      display:flex;
+      flex-wrap:wrap;
+      gap:14px;
+      font-size:0.9rem;
+    }
+
+    .footer-links a{
+      color:#475569;
+    }
+
     @media (min-width: 760px){
       .container{padding:0 24px}
+
       .topbar{
         padding:28px 0 10px;
         flex-direction:row;
         align-items:center;
         justify-content:space-between;
       }
+
       .hero{
-        gap:34px;
-        padding:20px 0 66px;
+        padding:20px 0 30px;
       }
-      h1{font-size:3.6rem}
-      .lead{font-size:1.08rem}
-      .mini-cards{grid-template-columns:repeat(3,1fr)}
+
+      .hero-layout{
+        grid-template-columns:1fr;
+      }
+
+      h1{font-size:3.5rem}
+      .lead{font-size:1.06rem}
+
       .grid-two{
         grid-template-columns:1fr 1fr;
         gap:14px;
       }
+
+      .cards{
+        grid-template-columns:repeat(3,1fr);
+      }
+
       .steps-grid{
         grid-template-columns:repeat(3,1fr);
         gap:16px;
         padding:26px 0;
       }
+
       .footer-inner{
         flex-direction:row;
-        align-items:center;
         justify-content:space-between;
+        align-items:center;
       }
     }
 
     @media (min-width: 1024px){
-      .hero{
+      .hero-layout{
         grid-template-columns:1.02fr 0.98fr;
-        align-items:center;
-        gap:44px;
-        padding:26px 0 82px;
+        align-items:start;
+        gap:42px;
       }
+
       h1{
-        font-size:4.35rem;
+        font-size:4.2rem;
         max-width:720px;
       }
-      .form-card{padding:28px}
-      .form-card h2{font-size:2rem}
+
+      .form-card{
+        padding:28px;
+      }
+
+      .form-card h2{
+        font-size:1.9rem;
+      }
+
+      .hero{
+        padding:26px 0 34px;
+      }
     }
   </style>
 </head>
@@ -362,59 +486,48 @@
     <div class="topbar">
       <div>
         <div class="brand-title">Davide Gregoris</div>
-        <div class="brand-sub">Consulenza gratuita bollette di casa</div>
+        <div class="brand-sub">Analisi gratuita bollette di casa</div>
       </div>
-      <div class="badge">Analisi senza impegno</div>
+      <div class="badge">Senza impegno</div>
     </div>
   </header>
 
   <main class="container">
     <section class="hero">
-      <div class="hero-copy">
-        <div class="tags">
-          <span class="tag">Luce</span>
-          <span class="tag">Gas</span>
-          <span class="tag">Internet</span>
-        </div>
-
-        <h1>Scopri se puoi <span class="underline">risparmiare</span> sulla tua bolletta.</h1>
-
-        <p class="lead">
-          Ti aiuto a capire se la tua offerta casa è davvero conveniente. Lascia i tuoi dati e ti ricontatto per una consulenza gratuita, semplice e senza impegno.
-        </p>
-
-        <div class="benefits">
-          <div class="benefit"><span class="benefit-dot">✓</span><span>Consulenza gratuita e senza impegno</span></div>
-          <div class="benefit"><span class="benefit-dot">✓</span><span>Ricontatto veloce e diretto</span></div>
-          <div class="benefit"><span class="benefit-dot">✓</span><span>Spiegazione semplice, senza pressione commerciale aggressiva</span></div>
-        </div>
-
-        <div class="mini-cards">
-          <div class="mini-card">
-            <div class="mini-card-title">Analisi offerta</div>
-            <p class="mini-card-text">Controllo rapido della tua situazione attuale e primo orientamento chiaro.</p>
+      <div class="hero-layout">
+        <div class="hero-copy">
+          <div class="tags">
+            <span class="tag">Luce</span>
+            <span class="tag">Gas</span>
+            <span class="tag">Internet</span>
           </div>
-          <div class="mini-card">
-            <div class="mini-card-title">Luce e gas</div>
-            <p class="mini-card-text">Valutazione delle opzioni più adatte per la casa, senza tecnicismi inutili.</p>
-          </div>
-          <div class="mini-card">
-            <div class="mini-card-title">Anche internet</div>
-            <p class="mini-card-text">Verifica se puoi ottimizzare anche la linea di casa e la spesa mensile.</p>
-          </div>
-        </div>
-      </div>
 
-      <div class="hero-form">
-        <div class="form-card">
-          <h2>Richiedi la tua consulenza gratuita</h2>
-          <p>
-            Compila il form e ti contatto per capire se ci sono margini di miglioramento sulla tua bolletta di casa.
+          <h1>Scopri se puoi <span class="underline">risparmiare</span> sulla tua bolletta.</h1>
+
+          <p class="lead">
+            Analizzo gratuitamente la tua situazione luce, gas o internet e ti ricontatto senza impegno.
           </p>
+
+          <div class="benefits">
+            <div class="benefit"><span class="benefit-dot">✓</span><span>Nessun costo e nessun obbligo di attivazione</span></div>
+            <div class="benefit"><span class="benefit-dot">✓</span><span>Ti ricontatto personalmente in modo semplice e chiaro</span></div>
+            <div class="benefit"><span class="benefit-dot">✓</span><span>Prima analisi rapida della tua situazione attuale</span></div>
+          </div>
+        </div>
+
+        <div class="form-card">
+          <h2>Richiedi la tua analisi gratuita</h2>
+          <p>
+            Compila il form qui sotto. Ti ricontatto per capire se ci sono margini di miglioramento sulla tua spesa di casa.
+          </p>
+
+          <div class="form-note">
+            Campi essenziali: nome, telefono, email e messaggio. Gli altri sono facoltativi.
+          </div>
 
           <form action="https://api.web3forms.com/submit" method="POST" id="lead-form" novalidate>
             <input type="hidden" name="access_key" value="579d70b2-c3bc-446b-b048-5bb8fc01b2eb" />
-            <input type="hidden" name="subject" value="Nuova richiesta dal sito - Consulenza bollette" />
+            <input type="hidden" name="subject" value="Nuova richiesta dal sito - Analisi bollette" />
             <input type="hidden" name="from_name" value="Landing Davide Gregoris" />
             <input type="checkbox" name="botcheck" class="hidden" tabindex="-1" autocomplete="off" />
 
@@ -441,12 +554,12 @@
             </div>
 
             <div class="field" style="margin-top:12px;">
-              <label for="comune">Comune</label>
+              <label for="comune">Comune <span class="optional">(facoltativo)</span></label>
               <input id="comune" name="comune" type="text" placeholder="Dove abiti" />
             </div>
 
             <div class="field" style="margin-top:12px;">
-              <label for="fornitore">Attuale fornitore o richiesta</label>
+              <label for="fornitore">Attuale fornitore o richiesta <span class="optional">(facoltativo)</span></label>
               <input id="fornitore" name="fornitore_o_richiesta" type="text" placeholder="Es. Enel, Sorgenia, TIM, Fastweb..." />
             </div>
 
@@ -457,13 +570,32 @@
 
             <label class="privacy">
               <input id="privacy" name="privacy_accettata" type="checkbox" value="Sì" required />
-              <span>Acconsento al trattamento dei miei dati per essere ricontattato in merito alla richiesta di consulenza gratuita.</span>
+              <span>Acconsento al trattamento dei miei dati per essere ricontattato in merito alla mia richiesta di analisi gratuita.</span>
             </label>
 
-            <button class="button" type="submit" id="submit-button">Richiedi consulenza gratuita</button>
+            <button class="button" type="submit" id="submit-button">Richiedi analisi gratuita</button>
+
             <div class="form-result" id="form-result"></div>
-            <div class="safe-note">🔒 Nessun impegno, solo una prima analisi della tua situazione.</div>
+
+            <div class="trust-copy">
+              Ti ricontatto personalmente, senza costi e senza obbligo di attivazione.
+            </div>
           </form>
+        </div>
+      </div>
+
+      <div class="cards">
+        <div class="mini-card">
+          <div class="mini-card-title">Analisi offerta</div>
+          <p class="mini-card-text">Controllo rapido della tua situazione attuale e primo orientamento chiaro.</p>
+        </div>
+        <div class="mini-card">
+          <div class="mini-card-title">Luce e gas</div>
+          <p class="mini-card-text">Valutazione delle opzioni più adatte per la casa, senza tecnicismi inutili.</p>
+        </div>
+        <div class="mini-card">
+          <div class="mini-card-title">Anche internet</div>
+          <p class="mini-card-text">Verifica se puoi ottimizzare anche la linea di casa e la spesa mensile.</p>
         </div>
       </div>
     </section>
@@ -482,8 +614,19 @@
         </div>
         <div class="step">
           <div class="small">3. Capisci se conviene</div>
-          <p>Ricevi un orientamento semplice, senza pressione e senza impegno.</p>
+          <p>Ricevi un primo orientamento semplice, senza pressione e senza impegno.</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="privacy-section" id="privacy">
+    <div class="container">
+      <div class="privacy-box">
+        <h3>Informativa privacy sintetica</h3>
+        <p>
+          I dati inviati tramite questo modulo vengono utilizzati esclusivamente per ricontattarti in merito alla tua richiesta di analisi gratuita. Non verranno usati per finalità diverse da quelle collegate al ricontatto commerciale richiesto. Per una versione completa dell’informativa puoi aggiungere qui il link alla tua privacy policy estesa quando sarà pronta.
+        </p>
       </div>
     </div>
   </section>
@@ -492,9 +635,13 @@
     <div class="footer-inner">
       <div>
         <div class="footer-brand">Davide Gregoris</div>
-        <div>Consulenza gratuita per bollette di casa</div>
+        <div>Analisi gratuita per bollette di casa</div>
       </div>
-      <div>Contatto diretto su richiesta</div>
+
+      <div class="footer-links">
+        <a href="#privacy">Privacy</a>
+        <a href="mailto:tuamail@example.com">Email contatto</a>
+      </div>
     </div>
   </footer>
 
@@ -545,7 +692,7 @@
         result.textContent = "Si è verificato un errore. Riprova tra poco.";
       } finally {
         submitButton.disabled = false;
-        submitButton.textContent = "Richiedi consulenza gratuita";
+        submitButton.textContent = "Richiedi analisi gratuita";
       }
     });
   </script>
