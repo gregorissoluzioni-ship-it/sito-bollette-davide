@@ -112,6 +112,13 @@
       max-width:620px;
     }
 
+    .lead-note{
+      margin:-6px 0 0;
+      font-size:0.9rem;
+      color:#6B7A96;
+      max-width:620px;
+    }
+
     .benefits{
       display:grid;
       gap:10px;
@@ -201,7 +208,8 @@
     }
 
     .field input,
-    .field textarea{
+    .field textarea,
+    .field select{
       width:100%;
       border:1px solid var(--line);
       background:#fff;
@@ -221,7 +229,8 @@
     }
 
     .field input:focus,
-    .field textarea:focus{
+    .field textarea:focus,
+    .field select:focus{
       border-color:#94a3b8;
       box-shadow:0 0 0 4px rgba(148,163,184,0.12);
     }
@@ -586,6 +595,10 @@
             Analizzo gratuitamente la tua situazione e ti ricontatto senza impegno per capire se ci sono margini di risparmio.
           </p>
 
+          <p class="lead-note">
+            Disponibile anche per attività e partite IVA
+          </p>
+
           <div class="benefits">
             <div class="benefit"><span class="benefit-dot">✓</span><span>Nessun costo e nessun obbligo di attivazione</span></div>
             <div class="benefit"><span class="benefit-dot">✓</span><span>Ti ricontatto personalmente in modo semplice e chiaro</span></div>
@@ -596,7 +609,7 @@
         <div class="form-card">
           <h2>Richiedi la tua analisi gratuita</h2>
           <p>
-            Compila il form qui sotto. Ti ricontatto per capire se ci sono margini di miglioramento sulla tua spesa di casa.
+            Compila il form qui sotto. Ti ricontatto per capire in modo semplice se ci sono margini di miglioramento sulla tua spesa.
           </p>
 
           <div class="form-note">
@@ -632,6 +645,15 @@
             </div>
 
             <div class="field" style="margin-top:12px;">
+              <label for="tipo_utenza">Tipo di utenza</label>
+              <select id="tipo_utenza" name="tipo_utenza">
+                <option value="">Seleziona</option>
+                <option value="Privato">Privato</option>
+                <option value="Attività / Partita IVA">Attività / Partita IVA</option>
+              </select>
+            </div>
+
+            <div class="field" style="margin-top:12px;">
               <label for="comune">Comune <span class="optional">(facoltativo)</span></label>
               <input id="comune" name="comune" type="text" placeholder="Dove abiti" />
             </div>
@@ -643,7 +665,7 @@
 
             <div class="field" style="margin-top:12px;">
               <label for="messaggio">Messaggio</label>
-              <textarea id="messaggio" name="message" placeholder="Scrivi qui se vuoi essere ricontattato per luce, gas o internet" required></textarea>
+              <textarea id="messaggio" name="message" placeholder="Scrivi qui se vuoi essere ricontattato o se hai una richiesta specifica" required></textarea>
             </div>
 
             <label class="privacy">
@@ -724,7 +746,7 @@
 
           <p>
             <strong>2. Dati personali trattati</strong><br>
-            Tramite il modulo di contatto possono essere raccolti i seguenti dati personali: nome, cognome, numero di telefono, indirizzo email, comune, attuale fornitore o richiesta, contenuto del messaggio inviato e ogni altra informazione eventualmente fornita spontaneamente dall’utente.
+            Tramite il modulo di contatto possono essere raccolti i seguenti dati personali: nome, cognome, numero di telefono, indirizzo email, tipo di utenza, comune, attuale fornitore o richiesta, contenuto del messaggio inviato e ogni altra informazione eventualmente fornita spontaneamente dall’utente.
           </p>
 
           <p>
