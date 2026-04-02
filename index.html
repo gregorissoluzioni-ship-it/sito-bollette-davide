@@ -183,16 +183,6 @@
       font-size:0.94rem;
     }
 
-    .form-note{
-      margin-top:10px;
-      font-size:0.88rem;
-      color:#475569;
-      background:#f8fafc;
-      border:1px solid var(--line);
-      border-radius:14px;
-      padding:10px 12px;
-    }
-
     .grid-two{
       display:grid;
       gap:12px;
@@ -435,7 +425,6 @@
 
     .privacy a,
     .privacy-box a,
-    .form-note a,
     .footer-links a{
       text-decoration:underline;
     }
@@ -622,10 +611,6 @@
           <p>
             Compila il form qui sotto. Ti ricontattiamo per capire in modo semplice se ci sono margini di miglioramento sulla tua spesa.
           </p>
-
-          <div class="form-note">
-            I dati inviati tramite questo modulo saranno usati solo per ricontattarti in merito alla tua richiesta e saranno conservati per un massimo di 6 mesi. Maggiori dettagli nell’<a href="#privacy-policy" onclick="document.getElementById('privacy-details').open = true;">informativa privacy</a>.
-          </div>
 
           <form action="https://api.web3forms.com/submit" method="POST" id="lead-form" novalidate>
             <input type="hidden" name="access_key" value="579d70b2-c3bc-446b-b048-5bb8fc01b2eb" />
@@ -826,12 +811,13 @@
         <a href="#privacy-policy" onclick="document.getElementById('privacy-details').open = true;">Privacy Policy</a>
         <a href="mailto:gregoris.soluzioni@gmail.com">gregoris.soluzioni@gmail.com</a>
         <a href="mailto:giovannivolpettik@gmail.com">giovannivolpettik@gmail.com</a>
+        <span>P.IVA 03086580309</span>
       </div>
     </div>
   </footer>
 
   <a
-    href="https://wa.me/393755009180?text=Ciao%20Davide,%20vorrei%20una%20consulenza%20gratuita%20sulla%20bolletta."
+    href="https://wa.me/393755009180?text=Ciao,%20vorrei%20una%20consulenza%20gratuita%20sulla%20bolletta."
     class="whatsapp-float"
     target="_blank"
     rel="noopener noreferrer"
