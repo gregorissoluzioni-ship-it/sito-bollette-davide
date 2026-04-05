@@ -71,6 +71,7 @@ a{color:inherit;text-decoration:none}
   display:grid;
   gap:22px;
   padding:14px 0 42px;
+  margin-bottom: 28px;
 }
 
 .hero-copy{
@@ -320,9 +321,7 @@ h1{
 }
 
 .steps{
-  border-top:1px solid var(--line);
-  border-bottom:1px solid var(--line);
-  background:#f8fafc;
+  padding: 0 0 32px;
 }
 
 .steps-grid{
@@ -361,7 +360,7 @@ h1{
 }
 
 .privacy-section{
-  padding:26px 0 8px;
+  padding:0 0 32px;
 }
 
 .privacy-accordion{
@@ -489,6 +488,7 @@ footer{
 
   .hero{
     padding:20px 0 30px;
+    margin-bottom: 32px;
   }
 
   .hero-layout{
@@ -552,5 +552,23 @@ footer{
 
   .hero{
     padding:26px 0 34px;
+  }
+}
+
+/* Uniform panels for desktop sections */
+.steps .container,
+.privacy-section .container{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:24px;
+  box-shadow:var(--shadow);
+  padding:20px;
+}
+
+@media (max-width: 759px){
+  .steps .container,
+  .privacy-section .container{
+    border-radius:18px;
+    padding:16px;
   }
 }
