@@ -159,6 +159,12 @@ h1{
   padding:20px;
 }
 
+.cards,
+.steps .container,
+.privacy-section .container{
+  background:transparent;
+}
+
 .form-card h2{
   margin:0;
   font-size:1.45rem;
